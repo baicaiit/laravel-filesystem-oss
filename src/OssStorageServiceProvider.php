@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Iidestiny\LaravelFilesystemOss;
+namespace Baicaiit\LaravelFilesystemOss;
 
 use Iidestiny\Flysystem\Oss\OssAdapter;
 use Iidestiny\Flysystem\Oss\Plugins\FileUrl;
@@ -36,12 +36,13 @@ class OssStorageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        
         app('filesystem')->extend('oss', function ($app, $config) {
             $root = $config['root'] ?? null;
             $buckets = isset($config['buckets'])?$config['buckets']:[];
             $adapter = new OssAdapter(
+                $config['access_id'],
                 $config['access_key'],
-                $config['secret_key'],
                 $config['endpoint'],
                 $config['bucket'],
                 $config['isCName'],

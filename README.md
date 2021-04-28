@@ -1,24 +1,9 @@
+#### 在 iiDestiny/laravel-filesystem-oss 基础上进行修改
+
 <h1 align="center">laravel filesystem oss</h1>
 
 <p align="center">
 <a href="https://www.aliyun.com/product/oss">AliOss</a> storage for Laravel based on <a href="https://github.com/iiDestiny/flysystem-oss">iidestiny/flysystem-oss</a>.
-</p>
-
-<p align="center">
-<a href="https://github.com/iiDestiny/flysystem-oss"><img src="https://travis-ci.org/iiDestiny/flysystem-oss.svg?branch=master"></a>
-<a href="https://github.com/iiDestiny/flysystem-oss"><img src="https://github.styleci.io/repos/163501119/shield"></a>
-<a href="https://github.com/iiDestiny/laravel-filesystem-oss"><img src="https://poser.pugx.org/iidestiny/laravel-filesystem-oss/v/stable"></a>
-<a href="https://github.com/iiDestiny/laravel-filesystem-oss"><img src="https://poser.pugx.org/iidestiny/laravel-filesystem-oss/downloads"></a>
-<a href="https://github.com/iiDestiny/laravel-filesystem-oss"><img src="https://poser.pugx.org/iidestiny/laravel-filesystem-oss/v/unstable"></a>
-<a href="https://scrutinizer-ci.com/g/iiDestiny/flysystem-oss/?branch=master"><img src="https://scrutinizer-ci.com/g/iiDestiny/flysystem-oss/badges/quality-score.png?b=master"></a>
-<a href="https://github.com/iiDestiny/laravel-filesystem-oss"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"></a>
-<a href="https://github.com/iiDestiny/laravel-filesystem-oss"><img src="https://poser.pugx.org/iidestiny/laravel-filesystem-oss/license"></a>
-</p>
-
-<p align="center">
-感谢关注「GitHub 热门」公众号，带你了解技术圈内热门新鲜事！
-<br/>
-<img src="https://cdn.learnku.com/uploads/images/202011/09/4430/qsECw9Ctgv.jpg!large">
 </p>
 
 ## 扩展包要求
@@ -28,17 +13,17 @@
 ## 安装命令
 
 ```shell
-$ composer require "iidestiny/laravel-filesystem-oss" -vvv
+$ composer require "baicaiit/laravel-filesystem-oss" -vvv
 ```
 
 ## 配置
 
-1. 将服务提供者 `Iidestiny\LaravelFilesystemOss\OssStorageServiceProvider::class` 注册到 `config/app.php` 文件:
+1. 将服务提供者 `Baicaiit\LaravelFilesystemOss\OssStorageServiceProvider::class` 注册到 `config/app.php` 文件:
 
 ```php
 'providers' => [
     // Other service providers...
-    Iidestiny\LaravelFilesystemOss\OssStorageServiceProvider::class,
+    Baicaiit\LaravelFilesystemOss\OssStorageServiceProvider::class,
 ],
 ```
 
@@ -57,9 +42,10 @@ return [
             'root' => '', // 设置上传时根前缀
             'access_key' => env('OSS_ACCESS_KEY'),
             'secret_key' => env('OSS_SECRET_KEY'),
-            'endpoint'   => env('OSS_ENDPOINT'), // 使用 ssl 这里设置如: https://oss-cn-beijing.aliyuncs.com
+            'endpoint'   => env('OSS_ENDPOINT'), 
             'bucket'     => env('OSS_BUCKET'),
-            'isCName'    => env('OSS_IS_CNAME', false), // 如果 isCname 为 false，endpoint 应配置 oss 提供的域名如：`oss-cn-beijing.aliyuncs.com`，否则为自定义域名，，cname 或 cdn 请自行到阿里 oss 后台配置并绑定 bucket
+            // 如果 isCname 为 false，endpoint 应配置 oss 提供的域名如：`oss-cn-beijing.aliyuncs.com`，否则为自定义域名，，cname 或 cdn 请自行到阿里 oss 后台配置并绑定 bucket
+            'isCName'    => env('OSS_IS_CNAME', false), 
             // 如果有更多的 bucket 需要切换，就添加所有bucket，默认的 bucket 填写到上面，不要加到 buckets 中
             'buckets'=>[
                 'test'=>[
@@ -331,7 +317,3 @@ export default {
 ## 参考
 
 -   [overtrue/flysystem-qiniu](https://github.com/overtrue/flysystem-qiniu)
-
-## License
-
-[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
